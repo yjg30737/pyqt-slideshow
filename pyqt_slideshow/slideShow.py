@@ -102,3 +102,9 @@ class SlideShow(QWidget):
         self.__btn[0].setChecked(True)
         self.__view.setFilename(self.__filenames[0])
         self.__btnWidget.setLayout(lay)
+
+    def setNavigationButtonVisible(self, f):
+        self.__navWidget.setVisible(f)
+
+    def setBottomButtonVisible(self, f):
+        self.__btnWidget.setVisible(f)
