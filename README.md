@@ -26,7 +26,7 @@ You can set the image files to show with `setFilenames`.
 
 You can watch previous/next image by clicking the navigation button or nth image file by clicking the buttons at the bottom.
 
-Image is automatically changed by internal timer. It is set to 5000 milliseconds by default.
+Image is automatically changed by internal timer. Interval is set to 5000 milliseconds by default.
 
 ## Method Overview
 * `setFilenames(filenames: list)` - give the image files. You have to call this one time only so far.
