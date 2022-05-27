@@ -35,11 +35,10 @@ Image is automatically changed by internal timer. Interval is set to 5000 millis
 * `setBottomButtonVisible(f: bool)` - set the bottom button's visibility(which also decides that you use it or not)
 
 ## Example
-Code Sample
+### Code Sample 1 (Including navigation/bottom button)
 ```python
 from PyQt5.QtWidgets import QApplication
 from pyqt_slideshow import SlideShow
-
 
 if __name__ == "__main__":
     import sys
@@ -51,12 +50,36 @@ if __name__ == "__main__":
     app.exec_()
 ```
 
-Result
+### Result
 
 https://user-images.githubusercontent.com/55078043/170615616-932fb93d-3311-4f97-8ad7-10943e0d2308.mp4
+
+### Code Sample 2 (Not including navigation/bottom button)
+```python
+from PyQt5.QtWidgets import QApplication
+from pyqt_slideshow import SlideShow
+
+if __name__ == "__main__":
+    import sys
+
+    app = QApplication(sys.argv)
+    s = SlideShow()
+    s.setFilenames(['bioshock.jpg', 'dragon_age.jpg', 'ride_to_hell_retribution.jpg'])
+    s.setNavigationButtonVisible(False)
+    s.setBottomButtonVisible(False)
+    s.show()
+    app.exec_()
+```
+
+### Result
+
+https://user-images.githubusercontent.com/55078043/170641896-336308b5-6f5c-4099-8b03-029a1f81337e.mp4
+
+## Note
 
 I'm still working on SvgButton's style. You can see the <, > buttons in the picture. Those things are SvgButton. 
 
 It is kinda ugly looking and could be hard to see depending on the photo. So i will definitely change the style.
 
-Note: Don't play the last game on the list.
+By the way, don't play the last game on the list.
+
