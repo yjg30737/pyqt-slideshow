@@ -14,6 +14,7 @@ PyQt widget for slide show
 
 ## Method Overview
 * `setFilenames(filenames: list)` - give the image files. You have to call this one time only so far.
+* `setInterval(milliseconds: int)` - set the image change interval
 
 ## Example
 Code Sample
