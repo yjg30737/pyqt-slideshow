@@ -108,3 +108,9 @@ class SlideShow(QWidget):
 
     def setBottomButtonVisible(self, f):
         self.__btnWidget.setVisible(f)
+
+    def setTimerEnabled(self, f):
+        if f:
+            self.__timer.start()
+        else:
+            self.__timer.stop()
