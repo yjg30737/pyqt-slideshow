@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup
 from pyqt_ani_radiobutton import AniRadioButton
 from pyqt_single_image_graphics_view import SingleImageGraphicsView
@@ -21,6 +21,7 @@ class SlideShow(QWidget):
         self.__view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.__view.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.__view.setStyleSheet('QGraphicsView { background: transparent; border: none; }')
+        self.__view.installEventFilter(self)
 
         self.__btnGroup = QButtonGroup()
         self.__btnGroup.buttonClicked.connect(self.__showImageOfIdx)
@@ -51,13 +52,26 @@ class SlideShow(QWidget):
         lay.addWidget(self.__btnWidget, 2, 0, 1, 1, Qt.AlignCenter)
         self.setLayout(lay)
 
+        self.__timer = QTimer(self)
+        self.__timer.setInterval(5000)
+        self.__timer.timeout.connect(self.__nextByTimer)
+        self.__timer.start()
+
     def __showImageOfIdx(self, btn):
         idx = self.__btnGroup.id(btn)
         self.__view.setFilename(self.__filenames[idx])
         self.__prevNextBtnToggled(idx)
+        self.__timer.start()
 
     def __prev(self):
         idx = max(0, self.__btnGroup.checkedId()-1)
+        self.__btnGroup.button(idx).setChecked(True)
+        self.__view.setFilename(self.__filenames[idx])
+        self.__prevNextBtnToggled(idx)
+        self.__timer.start()
+
+    def __nextByTimer(self):
+        idx = (self.__btnGroup.checkedId()+1) % len(self.__btnGroup.buttons())
         self.__btnGroup.button(idx).setChecked(True)
         self.__view.setFilename(self.__filenames[idx])
         self.__prevNextBtnToggled(idx)
@@ -67,10 +81,14 @@ class SlideShow(QWidget):
         self.__btnGroup.button(idx).setChecked(True)
         self.__view.setFilename(self.__filenames[idx])
         self.__prevNextBtnToggled(idx)
+        self.__timer.start()
 
     def __prevNextBtnToggled(self, idx):
         self.__prevBtn.setEnabled(idx != 0)
         self.__nextBtn.setEnabled(idx != len(self.__btnGroup.buttons())-1)
+
+    def setInterval(self, milliseconds: int):
+        self.__timer.setInterval(milliseconds)
 
     def setFilenames(self, filenames: list):
         self.__filenames = filenames
