@@ -43,12 +43,12 @@ class SlideShow(QWidget):
         lay.addWidget(self.__prevBtn, alignment=Qt.AlignLeft)
         lay.addWidget(self.__nextBtn, alignment=Qt.AlignRight)
 
-        navWidget = QWidget()
-        navWidget.setLayout(lay)
+        self.__navWidget = QWidget()
+        self.__navWidget.setLayout(lay)
 
         lay = QGridLayout()
         lay.addWidget(self.__view, 0, 0, 3, 1)
-        lay.addWidget(navWidget, 0, 0, 3, 1)
+        lay.addWidget(self.__navWidget, 0, 0, 3, 1)
         lay.addWidget(self.__btnWidget, 2, 0, 1, 1, Qt.AlignCenter)
         self.setLayout(lay)
 
