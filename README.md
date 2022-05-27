@@ -19,8 +19,14 @@ PyQt widget for slide show
 This widget mainly consists of three child widget.
 
 * View
-* Navigation widget - buttons on the both sides of the view
-* Bottom widget - buttons at the bottom
+* Navigation button widget - buttons on the both sides of the view
+* Bottom button widget - buttons at the bottom
+
+You can set the image files to show with `setFilenames`.
+
+You can watch previous/next image by clicking the navigation button or nth image file by clicking the buttons at the bottom.
+
+Image is automatically changed by internal timer. It is set to 5000 milliseconds by default.
 
 ## Method Overview
 * `setFilenames(filenames: list)` - give the image files. You have to call this one time only so far.
