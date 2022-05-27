@@ -65,8 +65,8 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     s = SlideShow()
     s.setFilenames(['bioshock.jpg', 'dragon_age.jpg', 'ride_to_hell_retribution.jpg'])
-    s.setNavigationButtonVisible(False)
-    s.setBottomButtonVisible(False)
+    s.setNavigationButtonVisible(False) # to not show the navigation button
+    s.setBottomButtonVisible(False) # to not show the bottom button
     s.show()
     app.exec_()
 ```
