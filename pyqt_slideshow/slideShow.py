@@ -103,13 +103,13 @@ class SlideShow(QWidget):
         self.__view.setFilename(self.__filenames[0])
         self.__btnWidget.setLayout(lay)
 
-    def setNavigationButtonVisible(self, f):
+    def setNavigationButtonVisible(self, f: bool):
         self.__navWidget.setVisible(f)
 
-    def setBottomButtonVisible(self, f):
+    def setBottomButtonVisible(self, f: bool):
         self.__btnWidget.setVisible(f)
 
-    def setTimerEnabled(self, f):
+    def setTimerEnabled(self, f: bool):
         if f:
             self.__timer.start()
         else:
