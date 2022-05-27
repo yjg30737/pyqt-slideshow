@@ -12,9 +12,21 @@ PyQt widget for slide show
 * <a href="https://github.com/yjg30737/pyqt-svg-button.git">pyqt-svg-button</a> - for navigation button on left and right sides
 * <a href="https://github.com/yjg30737/pyqt-ani-radiobutton.git">pyqt-ani-radiobutton</a> - for navigation button at the bottom
 
+## Detailed Description
+
+![image](https://user-images.githubusercontent.com/55078043/170638847-1816f292-f731-49bc-bbb3-d7180e7ec779.png)
+
+This widget mainly consists of three child widget.
+
+* View
+* Navigation widget - buttons on the both sides of the view
+* Bottom widget - buttons at the bottom
+
 ## Method Overview
 * `setFilenames(filenames: list)` - give the image files. You have to call this one time only so far.
 * `setInterval(milliseconds: int)` - set the image change interval
+* `setNavigationButtonVisible(f: bool)` - set the navigation button's visibility(which also decides that you use it or not)
+* `setBottomButtonVisible(f: bool)` - set the bottom button's visibility(which also decides that you use it or not)
 
 ## Example
 Code Sample
