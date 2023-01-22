@@ -21,8 +21,5 @@ setup(
     long_description=long_description,
     install_requires=[
         'PyQt5>=5.8',
-        'pyqt-svg-button>=0.0.1',
-        'pyqt-single-image-graphics-view>=0.0.1',
-        'pyqt-ani-radiobutton>=0.0.1'
     ]
 )
