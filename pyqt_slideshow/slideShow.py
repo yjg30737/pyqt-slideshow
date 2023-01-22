@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup
+from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup, QSizePolicy
 from pyqt_slideshow.widgets.aniButton import AniRadioButton
 from pyqt_slideshow.widgets.graphicsView import SingleImageGraphicsView
 from pyqt_slideshow.widgets.svgButton import SvgButton
@@ -97,7 +97,7 @@ class SlideShow(QWidget):
         lay = QHBoxLayout()
         for i in range(len(self.__filenames)):
             btn = AniRadioButton()
-            btn.setFixedSize(30, 15)
+            btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
             lay.addWidget(btn)
             self.__btn.append(btn)
             self.__btnGroup.addButton(btn, i)
@@ -119,3 +119,27 @@ class SlideShow(QWidget):
 
     def setGradientEnabled(self, f: bool):
         self.__view.setGradientEnabled(f)
+
+    # to set the bottom buttons' size by user
+    # here's how to do it:
+    # for btn in self.__btnGroup.buttons():
+    #     btn.setFixedSize(w, h)
+    def getButtonGroup(self):
+        return self.__btnGroup
+
+    # get the btn widget
+    # to set the spacing (currently)
+    # here's how to do it:
+    # self.__btnWidget.layout().setSpacing(5)
+    def getBtnWidget(self):
+        return self.__btnWidget
+
+    # get the prev button
+    # to set the prev nav button's size by user
+    def getPrevBtn(self):
+        return self.__prevBtn
+
+    # get the next button
+    # to set the next nav button's size by user
+    def getNextBtn(self):
+        return self.__nextBtn
