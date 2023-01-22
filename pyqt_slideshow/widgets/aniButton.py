@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QPropertyAnimation, QAbstractAnimation
-from PyQt5.QtWidgets import QAbstractButton
+from PyQt5.QtWidgets import QAbstractButton, QRadioButton
 
 
 class AniAbstractButton(QAbstractButton):

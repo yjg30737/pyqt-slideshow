@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup
-from widgets.aniButton import AniRadioButton
-from pyqt_single_image_graphics_view import SingleImageGraphicsView
-from pyqt_svg_button import SvgButton
+from pyqt_slideshow.widgets.aniButton import AniRadioButton
+from pyqt_slideshow.widgets.graphicsView import SingleImageGraphicsView
+from pyqt_slideshow.widgets.svgButton import SvgButton
 
 
 class SlideShow(QWidget):
