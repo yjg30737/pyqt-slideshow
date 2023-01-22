@@ -1,4 +1,5 @@
 from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup
 from pyqt_slideshow.widgets.aniButton import AniRadioButton
 from pyqt_slideshow.widgets.graphicsView import SingleImageGraphicsView
@@ -20,6 +21,7 @@ class SlideShow(QWidget):
         self.__view.setAspectRatioMode(Qt.KeepAspectRatioByExpanding)
         self.__view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.__view.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.__view.setRenderHint(QPainter.SmoothPixmapTransform)
         self.__view.setStyleSheet('QGraphicsView { background: transparent; border: none; }')
         self.__view.installEventFilter(self)
 
@@ -114,3 +116,6 @@ class SlideShow(QWidget):
             self.__timer.start()
         else:
             self.__timer.stop()
+
+    def setGradientEnabled(self, f: bool):
+        self.__view.setGradientEnabled(f)
