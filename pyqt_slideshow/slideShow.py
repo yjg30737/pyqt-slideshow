@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QWidget, QGridLayout, QHBoxLayout, QButtonGroup
-from pyqt_ani_radiobutton import AniRadioButton
+from widgets.aniButton import AniRadioButton
 from pyqt_single_image_graphics_view import SingleImageGraphicsView
 from pyqt_svg_button import SvgButton
 
