@@ -1,6 +1,8 @@
+import os
+import posixpath
+
 from PyQt5.QtGui import QColor, QPalette, qGray
-from PyQt5.QtWidgets import QAbstractButton, QGraphicsColorizeEffect, QWidget, qApp
-import absresgetter
+from PyQt5.QtWidgets import QAbstractButton, QGraphicsColorizeEffect, QWidget, qApp, QPushButton
 
 
 class SvgAbstractButton(QAbstractButton):
@@ -100,7 +102,9 @@ class SvgAbstractButton(QAbstractButton):
         self.setStyleSheet(self.__btn_style)
 
     def setIcon(self, icon: str):
-        self.__icon = absresgetter.getabsres(icon)
+        cur_dir = os.path.dirname(os.path.abspath(__file__))
+        par_dir = os.path.abspath(os.path.join(cur_dir, os.pardir))
+        self.__icon = os.path.join(par_dir, icon).replace(os.path.sep, posixpath.sep)
         self.__styleInit()
 
     def eventFilter(self, obj, e):
@@ -156,9 +160,6 @@ class SvgAbstractButton(QAbstractButton):
     def __scaleChanged(self, dpi):
         self.__size = dpi // 4
         self.__styleInit()
-
-from PyQt5.QtWidgets import QPushButton, QWidget
-from pyqt_svg_abstractbutton import SvgAbstractButton
 
 
 class SvgButton(QPushButton, SvgAbstractButton):
