@@ -7,11 +7,6 @@ PyQt widget for slide show
 ## Setup
 `python -m pip install pyqt-slideshow`
 
-## Included Packages
-* <a href="https://github.com/yjg30737/pyqt-single-image-graphics-view.git">pyqt-single-image-graphics-view</a> - main image view
-* <a href="https://github.com/yjg30737/pyqt-svg-button.git">pyqt-svg-button</a> - for navigation button on left and right sides
-* <a href="https://github.com/yjg30737/pyqt-ani-radiobutton.git">pyqt-ani-radiobutton</a> - for navigation button at the bottom
-
 ## Detailed Description
 
 ![image](https://user-images.githubusercontent.com/55078043/170638847-1816f292-f731-49bc-bbb3-d7180e7ec779.png)
@@ -34,6 +29,16 @@ Image is automatically changed by internal timer(QTimer). Interval is set to 500
 * `setInterval(milliseconds: int)` - set the image change interval
 * `setNavigationButtonVisible(f: bool)` - set the navigation button's visibility(which also decides that you use it or not)
 * `setBottomButtonVisible(f: bool)` - set the bottom button's visibility(which also decides that you use it or not)
+* `setGradientEnabled(f: bool)` - Cover the dark gradient over the image
+
+For example
+
+<img src="https://user-images.githubusercontent.com/55078043/213953541-bc00a0c8-f11b-4054-8efe-7bdfead13262.png" width=320, height=200/>
+
+* `getButtonGroup()` - get the button group(QButtonGroup) which has the every button. You can get them by `btnGrp.buttons()`
+* `getBtnWidget()` - get the btn widget to set the spacing between the bottom button or other customization of button widget
+* `getPrevBtn()` - get the prev button
+* `getNextBtn()` - get the next button
 
 ## Example
 ### Code Sample 1 (Including navigation/bottom button)
@@ -76,11 +81,8 @@ if __name__ == "__main__":
 
 https://user-images.githubusercontent.com/55078043/170641896-336308b5-6f5c-4099-8b03-029a1f81337e.mp4
 
-## Note
-
-I'm still working on SvgButton's style. You can see the <, > buttons in the picture. Those things are SvgButton. 
-
-It is kinda ugly looking and could be hard to see depending on the photo. So i will definitely change the style.
-
-By the way, don't play the last game on the list.
-
+## TODO list
+* Give the option to go back to first page by user when pressing the next button in the last page
+* Transition effect
+* Default screen when there is no image (thumbnail?)
+* Add more styles with QML
