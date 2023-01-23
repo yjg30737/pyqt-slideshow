@@ -39,7 +39,7 @@ class SlideShow(QWidget):
         self.__nextBtn = SvgButton(self)
         self.__nextBtn.setIcon('ico/next.svg')
         self.__nextBtn.setFixedSize(30, 50)
-        self.__nextBtn.clicked.connect(self.__next)
+        self.__nextBtn.clicked.connect(self.__nextClicked)
 
         lay = QHBoxLayout()
         lay.addWidget(self.__prevBtn, alignment=Qt.AlignLeft)
@@ -66,24 +66,28 @@ class SlideShow(QWidget):
         self.__timer.start()
 
     def __prev(self):
-        idx = max(0, self.__btnGroup.checkedId()-1)
-        self.__btnGroup.button(idx).setChecked(True)
-        self.__view.setFilename(self.__filenames[idx])
-        self.__prevNextBtnToggled(idx)
-        self.__timer.start()
+        if len(self.__filenames) > 0:
+            idx = max(0, self.__btnGroup.checkedId()-1)
+            self.__updateViewAndBtnBasedOnIdx(idx)
+            self.__timer.start()
 
     def __nextByTimer(self):
-        idx = (self.__btnGroup.checkedId()+1) % len(self.__btnGroup.buttons())
-        self.__btnGroup.button(idx).setChecked(True)
-        self.__view.setFilename(self.__filenames[idx])
-        self.__prevNextBtnToggled(idx)
+        if len(self.__filenames) > 0:
+            self.__next()
+
+    def __nextClicked(self):
+        if len(self.__filenames) > 0:
+            self.__next()
+            self.__timer.start()
 
     def __next(self):
-        idx = min(self.__btnGroup.checkedId()+1, len(self.__btnGroup.buttons())-1)
+        idx = (self.__btnGroup.checkedId()+1) % len(self.__btnGroup.buttons())
+        self.__updateViewAndBtnBasedOnIdx(idx)
+
+    def __updateViewAndBtnBasedOnIdx(self, idx):
         self.__btnGroup.button(idx).setChecked(True)
         self.__view.setFilename(self.__filenames[idx])
         self.__prevNextBtnToggled(idx)
-        self.__timer.start()
 
     def __prevNextBtnToggled(self, idx):
         self.__prevBtn.setEnabled(idx != 0)
