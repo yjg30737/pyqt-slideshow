@@ -1,6 +1,6 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPropertyAnimation, QObject
 from PyQt5.QtGui import QPixmap, QColor, QBrush, QRadialGradient
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsView
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsView, QGraphicsOpacityEffect, QGraphicsProxyWidget
 
 
 class SingleImageGraphicsView(QGraphicsView):
@@ -17,15 +17,9 @@ class SingleImageGraphicsView(QGraphicsView):
 
     def setFilename(self, filename: str):
         self._p = QPixmap(filename)
-        self._setPixmap(self._p)
-
-    def setPixmap(self, p):
-        self._setPixmap(p)
-
-    def _setPixmap(self, p):
-        self._p = p
         self._scene = QGraphicsScene()
         self._item = self._scene.addPixmap(self._p)
+
         self.setScene(self._scene)
         self.fitInView(self._item, self.__aspectRatioMode)
 

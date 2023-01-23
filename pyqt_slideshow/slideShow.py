@@ -15,13 +15,13 @@ class SlideShow(QWidget):
     def __initVal(self):
         self.__btn = []
         self.__filenames = []
+        self.__interval = 5000
 
     def __initUi(self):
         self.__view = SingleImageGraphicsView()
         self.__view.setAspectRatioMode(Qt.KeepAspectRatioByExpanding)
         self.__view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.__view.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.__view.setRenderHint(QPainter.SmoothPixmapTransform)
         self.__view.setStyleSheet('QGraphicsView { background: transparent; border: none; }')
         self.__view.installEventFilter(self)
 
@@ -55,7 +55,7 @@ class SlideShow(QWidget):
         self.setLayout(lay)
 
         self.__timer = QTimer(self)
-        self.__timer.setInterval(5000)
+        self.__timer.setInterval(self.__interval)
         self.__timer.timeout.connect(self.__nextByTimer)
         self.__timer.start()
 
