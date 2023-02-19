@@ -14,7 +14,7 @@ setup(
     author_email='yjg30737@gmail.com',
     license='MIT',
     packages=find_packages(),
-    package_data={'pyqt_slideshow.ico': ['next.svg', 'prev.svg']},
+    package_data={'pyqt_slideshow.ico': ['right.svg', 'left.svg']},
     description='PyQt widget for slide show',
     url='https://github.com/yjg30737/pyqt-slideshow.git',
     long_description_content_type='text/markdown',

@@ -31,13 +31,13 @@ class SlideShow(QWidget):
         self.__btnWidget = QWidget()
 
         self.__prevBtn = SvgButton(self)
-        self.__prevBtn.setIcon('ico/prev.svg')
+        self.__prevBtn.setIcon('ico/left.svg')
         self.__prevBtn.setFixedSize(30, 50)
         self.__prevBtn.clicked.connect(self.__prev)
         self.__prevBtn.setEnabled(False)
 
         self.__nextBtn = SvgButton(self)
-        self.__nextBtn.setIcon('ico/next.svg')
+        self.__nextBtn.setIcon('ico/right.svg')
         self.__nextBtn.setFixedSize(30, 50)
         self.__nextBtn.clicked.connect(self.__nextClicked)
 
